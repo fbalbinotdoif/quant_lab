@@ -1,5 +1,4 @@
 import numpy as np
-
 from cli.cli import get_window
 from database.querys import q_returns
 from feature_engineering.returns import log_return
