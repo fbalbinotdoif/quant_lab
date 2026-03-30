@@ -1,15 +1,24 @@
+import pandas as pd
 from cli.cli import get_window
 from database.querys import q_returns
 
 
 def rolling_mean(df, window):
-    adj_close = df['adj_close']
-    mean_rolling = adj_close.rolling(window).mean()
+    if isinstance(df, pd.DataFrame):
+        adj_close = df['adj_close']
+        mean_rolling = adj_close.rolling(window).mean()
+    else:
+        mean_rolling = df.rolling(window).mean()
+
     return mean_rolling
 
 def rolling_std(df, window):
-    adj_close = df['adj_close']
-    std_rolling = adj_close.rolling(window).std()
+    if isinstance(df, pd.DataFrame):
+        adj_close = df['adj_close']
+        std_rolling = adj_close.rolling(window).std()
+    else:
+        std_rolling = df.rolling(window).std()
+
     return std_rolling
 
 def rolling_min(df, window):
