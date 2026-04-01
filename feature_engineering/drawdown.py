@@ -1,13 +1,13 @@
 from cli.cli import get_window
 from database.querys import q_returns
 
-def function_drawdow(df):       #drawdown day by day
+def function_drawdown(df):       #drawdown day by day
     adj_close = df['adj_close']
     max = adj_close.cummax()
     drawdown =  (adj_close - max)/max
     return drawdown
 
-def max_drawdow(drawdown):
+def max_drawdown(drawdown):
     max_drop = drawdown.min()
     return max_drop
 

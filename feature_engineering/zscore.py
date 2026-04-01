@@ -1,7 +1,7 @@
 from cli.cli import get_window
 from database.querys import q_returns
-from returns import log_return
-from rolling import rolling_mean, rolling_std
+from feature_engineering.returns import log_return
+from feature_engineering.rolling import rolling_mean, rolling_std
 
 def z_score_historic(df):
     returns = log_return(df)

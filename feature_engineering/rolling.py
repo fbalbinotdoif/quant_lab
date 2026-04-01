@@ -22,13 +22,19 @@ def rolling_std(df, window):
     return std_rolling
 
 def rolling_min(df, window):
-    adj_close = df['adj_close']
-    min_rolling = adj_close.rolling(window).min()
+    if isinstance(df, pd.DataFrame):
+        adj_close = df['adj_close']
+        min_rolling = adj_close.rolling(window).min()
+    else:
+        min_rolling = df.rolling(window).min()
     return min_rolling
 
 def rolling_max(df, window):
-    adj_close = df['adj_close']
-    max_rolling = adj_close.rolling(window).max()
+    if isinstance(df, pd.DataFrame):
+        adj_close = df['adj_close']
+        max_rolling = adj_close.rolling(window).max()
+    else:
+        max_rolling = df.rolling(window).max()
     return max_rolling
 
 if __name__ == "__main__":
