@@ -1,7 +1,7 @@
 from api_client import history_price
 from transform import transform_data
 from db_writer import writer
-from cli import get_ticker_period
+from cli.cli import get_ticker_period
 
 def collect (ticker, period):
     print(f'Collecting {ticker} fro {period}')
