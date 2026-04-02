@@ -3,6 +3,9 @@ from cli.cli import get_ticker_period
 from feature_engineering.volatility import historic_simple_volatility
 from feature_engineering.returns import log_return_digit
 from feature_engineering.returns import log_return
+from feature_engineering.drawdown import max_drawdown
+from feature_engineering.drawdown import function_drawdown
+
 
 def sharpe_ratio(df, rf=0.05):
     return_log = log_return(df)
@@ -25,6 +28,14 @@ def sortino_ratio(df, rf=0.05):
     sortino = (rp - rf_period) / sigma
     return sortino
 
+def calmar_ratio(df):
+    rp = log_return_digit(df)
+    drawdown = function_drawdown(df)
+    max_dd = max_drawdown(drawdown)
+
+    calmar = rp / abs(max_dd)
+    return calmar
+
 if __name__ == "__main__":
     ticker, period = get_ticker_period()
     read = q_returns(ticker,period)
@@ -36,3 +47,7 @@ if __name__ == "__main__":
     print('SORTINO RATIO:')
     sortino = sortino_ratio(read)
     print(sortino)
+    print()
+    print('CALMAR RATIO:')
+    calmar = calmar_ratio(read)
+    print(calmar)
