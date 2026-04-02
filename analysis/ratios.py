@@ -1,3 +1,4 @@
+import pandas as pd
 from database.querys import q_returns
 from cli.cli import get_ticker_period
 from feature_engineering.volatility import historic_simple_volatility
@@ -36,9 +37,19 @@ def calmar_ratio(df):
     calmar = rp / abs(max_dd)
     return calmar
 
+def beta_ratio(df, benchmark):
+    rp = log_return(df)
+    rm = log_return(benchmark)
+
+    beta = (rp.cov(rm)) / rm.var()
+    return beta
+
+
 if __name__ == "__main__":
     ticker, period = get_ticker_period()
     read = q_returns(ticker,period)
+
+    benchmark = pd.read_csv('/home/farix369/laboratory/quant_lab/tests/fixtures/spy_1y.csv')
 
     print('SHARPE RATIO:')
     sharpe = sharpe_ratio(read)
@@ -51,3 +62,7 @@ if __name__ == "__main__":
     print('CALMAR RATIO:')
     calmar = calmar_ratio(read)
     print(calmar)
+    print()
+    print('BETA RATIO:')
+    beta = beta_ratio(read, benchmark)
+    print(beta)
