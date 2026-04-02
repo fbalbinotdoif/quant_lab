@@ -14,6 +14,16 @@ def sharpe_ratio(df, rf=0.05):
     sharpe = (rp - rf_period) / sigma
     return sharpe
 
+def sortino_ratio(df, rf=0.05):
+    return_log = log_return(df)
+    negative_return_log = return_log[return_log < 0]
+    rf_period = (1 + rf)**(len(df)/252)-1
+
+    rp = log_return_digit(df)
+    sigma =  historic_simple_volatility(negative_return_log)
+
+    sortino = (rp - rf_period) / sigma
+    return sortino
 
 if __name__ == "__main__":
     ticker, period = get_ticker_period()
@@ -22,3 +32,7 @@ if __name__ == "__main__":
     print('SHARPE RATIO:')
     sharpe = sharpe_ratio(read)
     print(sharpe)
+    print()
+    print('SORTINO RATIO:')
+    sortino = sortino_ratio(read)
+    print(sortino)
