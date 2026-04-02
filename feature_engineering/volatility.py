@@ -5,7 +5,7 @@ from feature_engineering.returns import log_return
 
 
 def historic_simple_volatility (return_log):
-    hs_volatility = return_log.std()
+    hs_volatility = (return_log.std()) * (252**0.5)
     return hs_volatility
 
 def anualized_volatility(hs_volatility):
