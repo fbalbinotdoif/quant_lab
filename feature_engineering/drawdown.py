@@ -51,11 +51,11 @@ if __name__ == "__main__":
     df = q_returns(ticker,period)
 
     print('DAILY DRAWDOWN:')
-    drawdown = function_drawdow(df)
+    drawdown = function_drawdown(df)
     print(drawdown)
     print()
     print('MAX DRAWDOWN:')
-    max_drop = max_drawdow(drawdown)
+    max_drop = max_drawdown(drawdown)
     print(max_drop)
     print()
     print('PEAK PRICE:')
