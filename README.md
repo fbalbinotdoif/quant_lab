@@ -84,7 +84,7 @@ Database credentials are managed via environment variables. The `.env` file is n
 This project is built with a systems thinking mindset — each version is a layer that builds on the previous one, forming a system that grows in complexity and capability organically.
 
 - **v0.1 — Data pipeline ✅**
-- **v0.2 — Feature engineering** — log returns, volatility, rolling stats, drawdown, z-score ✅**
+- **v0.2 — Feature engineering** — log returns, volatility, rolling stats, drawdown, z-score ✅
 - **v0.3 — Quantitative analysis** — correlations, VaR, distributions, statistical tests
 - **v0.4 — Visualization** — Matplotlib, Plotly, Power BI
 - **v0.5 — Backtesting** — strategies, Sharpe ratio, max drawdown
