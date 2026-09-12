@@ -110,8 +110,8 @@ def main():
         close = df['close']  
         adj = df['adj_close']
         volume = df['volume']
-        returns = log_return(df)
-        volatility = rolling_volatility(returns, args.window)
+        returns_series = log_return(df)
+        volatility_series = rolling_volatility(returns_series, args.window)
 
         if args.benchmark is not None:
             benchmark = q_returns_indexed(args.benchmark, args.period)
@@ -132,13 +132,13 @@ def main():
             signature = inspect.signature(function) #get the signature
 
             if 'asset1' in signature.parameters:
-                 result = function(returns, benchmark_returns, args.ticker, args.benchmark)
+                 result = function(returns_series, benchmark_returns, args.ticker, args.benchmark)
             elif 'date' in signature.parameters and 'excess' in signature.parameters:
                  result = function(excess.index, excess)
             elif 'date' in signature.parameters and 'returns' in signature.parameters:
-                 result = function(returns.index, returns)
+                 result = function(returns_series.index, returns_series)
             elif 'date' in signature.parameters and 'volatility' in signature.parameters:
-                 result = function(volatility.index, volatility)
+                 result = function(volatility_series.index, volatility_series)
             elif 'date' in signature.parameters and 'close' in signature.parameters and 'adj_close' in signature.parameters:
                  result = function(close.index, close, adj)
             else: 

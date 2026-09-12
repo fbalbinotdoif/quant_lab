@@ -26,7 +26,8 @@ def parse_args():
     visualization.add_argument('--ticker')
     visualization.add_argument('--period')
     visualization.add_argument('--functions', nargs='+')
-    visualization.add_argument('--window')
+    visualization.add_argument('--window', type=int)
+    visualization.add_argument('--benchmark')
 
     return parser.parse_args()
 
