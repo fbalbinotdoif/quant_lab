@@ -36,6 +36,10 @@ def main():
             'prices_correlation': correlation.prices_correlation,
         }
 
+        if not args.functions:
+            print("Error: --functions is required. Available: sharpe_ratio, sortino_ratio, etc.")
+            return
+
         if args.benchmark is not None:
             benchmark = q_returns_indexed(args.benchmark, args.period)
 
@@ -49,8 +53,6 @@ def main():
                 result = function(df)
             print(result)
             
-            
-
     elif args.command == 'feature_engineering':
         df = q_returns(args.ticker, args.period)
         drawdown_variable = function_drawdown(df)
