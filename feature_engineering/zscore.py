@@ -1,4 +1,4 @@
-from database.querys import q_returns
+from database.querys import q_returns_indexed
 from feature_engineering.returns import log_return
 from feature_engineering.rolling import rolling_mean, rolling_std
 

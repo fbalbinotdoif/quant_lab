@@ -6,24 +6,6 @@ PERIOD_MAP = {
     "1y": "1 year","2y": "2 years","5y": "5 years","10y": "10 years"
 }
 
-
-'QUERY RETURNS-----------------------------------------------------------------------------------------------------------------------------------------------------'
-def q_returns(ticker,period):
-   
-    if period == 'max':
-        date_filter = ""
-    elif period == 'ytd':
-        date_filter = "AND date >= DATE_TRUNC('year', CURRENT_DATE)"
-    else:
-        date_filter = f"AND date > (CURRENT_DATE - INTERVAL '{PERIOD_MAP[period]}')" 
-
-    connection = get_engine()
-
-    read = pd.read_sql((f"""SELECT adj_close FROM stock_prices WHERE
-                        ticker = '{ticker}'  {date_filter}
-                        """), connection)
-    return read
-
 'QUERY RETURNS INDEXED-----------------------------------------------------------------------------------------------------------------------------------------------------'
 
 def q_returns_indexed(ticker,period):
@@ -43,7 +25,7 @@ def q_returns_indexed(ticker,period):
                     """, connection, index_col='date')
     return read
 
-'QUERY FOR CHARTS'
+'QUERY FOR CHARTS-------------------------------------------------------------------------------'
 
 def q_price_chart(ticker, period):
 

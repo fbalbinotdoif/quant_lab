@@ -1,5 +1,5 @@
 import pandas as pd
-from database.querys import q_returns
+from database.querys import q_returns_indexed
 
 
 def rolling_mean(df, window):

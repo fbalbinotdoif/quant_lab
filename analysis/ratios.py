@@ -1,5 +1,5 @@
 import pandas as pd
-from database.querys import q_returns, q_returns_indexed
+from database.querys import q_returns_indexed
 from feature_engineering.volatility import historic_simple_volatility
 from feature_engineering.returns import log_return_digit, log_return
 from feature_engineering.drawdown import max_drawdown, function_drawdown

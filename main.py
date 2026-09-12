@@ -4,7 +4,7 @@ from pipelines.stock_collector import collector
 from analysis import benchmarking, correlation, ratios
 from visualization import analysis_charts, feature_charts, price_charts
 from feature_engineering import drawdown, returns, rolling, volatility, zscore
-from database.querys import q_returns, q_returns_indexed
+from database.querys import q_price_chart, q_returns_indexed
 from feature_engineering.returns import log_return
 from feature_engineering.drawdown import function_drawdown
 from analysis.benchmarking import excess_return
@@ -21,7 +21,7 @@ def main():
         collection = collector.collect(args.ticker, args.period)
 
     elif args.command == 'analysis':
-        df = q_returns(args.ticker, args.period)
+        df = q_returns_indexed(args.ticker, args.period)
 
         functions_map = {
             'sharpe_ratio': ratios.sharpe_ratio,
@@ -54,7 +54,7 @@ def main():
             print(result)
             
     elif args.command == 'feature_engineering':
-        df = q_returns(args.ticker, args.period)
+        df = q_returns_indexed(args.ticker, args.period)
         drawdown_variable = function_drawdown(df)
         return_log = log_return(df)
 
@@ -106,7 +106,7 @@ def main():
 
 
     elif args.command == 'visualization':
-        df = q_returns(args.ticker, args.period)
+        df = q_price_chart(args.ticker, args.period)
         close = df['close']  
         adj = df['adj_close']
         volume = df['volume']

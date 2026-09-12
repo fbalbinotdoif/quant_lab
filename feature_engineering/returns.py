@@ -1,5 +1,5 @@
 import numpy as np
-from database.querys import q_returns
+from database.querys import q_returns_indexed
 
 
 def log_return(df):
