@@ -1,19 +1,5 @@
 services:
-  db:
-    image: postgres:15
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=Quant2026
-      - POSTGRES_DB=quant_lab
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
   app:
     build: .
-    depends_on:
-      - db
     env_file:
-      - .env.docker
-
-volumes:
-  postgres_data:
+      - .env
