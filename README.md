@@ -7,10 +7,10 @@
 
 This project is built on systems thinking and systems theory — each version is a layer that builds on the previous one, forming a system that grows in complexity and capability organically. Every design decision reflects a systemic perspective: separation of responsibilities, modularity, emergent behavior from simple components, and feedback between layers. The end goal is not just a collection of tools, but a system that thinks.
 
-- **v0.1 — Planting the Seed** — ETL pipeline: extraction, transformation, load 
-- **v0.2 — Taking Root** — Feature engineering: returns, volatility, drawdown, z-score 
-- **v0.3 — First Sprout** — Analysis: performance ratios, correlation, benchmarking 
-- **v0.4 — First Leaves** — Visualization: price charts, feature charts, analysis charts
+- **v0.1 — Planting the Seed** — ETL pipeline: extraction, transformation, load *
+- **v0.2 — Taking Root** — Feature engineering: returns, volatility, drawdown, z-score *
+- **v0.3 — First Sprout** — Analysis: performance ratios, correlation, benchmarking *
+- **v0.4 — First Leaves** — Visualization: price charts, feature charts, analysis charts *
 - **v0.5 — ?** — Backtesting engine (C++/Rust)
 - **v0.6 — ?** — Machine learning integration
 - **v0.7 — ?** — Simulations: Monte Carlo, GBM, agent-based models
@@ -27,6 +27,18 @@ Cross-cutting layers across all versions: data validation, logging, config, mult
 Data is the foundation of every analysis, every decision. It is data that moves the world and the agents within it. The starting point of every decision, every movement, every impulse, lies in data — and in the information we build from it.
 
 Every system — financial, natural, social — feeds on information to operate. QUANT_LAB starts at the beginning: collection, transformation, storage — and grows from there into analysis, visualization, and simulation.
+
+---
+
+### Infrastructure
+
+| Layer | Status |
+|---|---|
+| CLI (`main.py`) — unified entry point for all modules | Completed |
+| Docker + Compose — containerized pipeline + PostgreSQL | Completed |
+| AWS EC2 + RDS — production deployment (us-east-1) | Completed |
+| Django — web layer | next |
+| Kubernetes — orchestration | queued |
 
 ---
 
@@ -75,6 +87,9 @@ Database credentials are managed via environment variables. The `.env` file is n
 - SQLAlchemy
 - python-dotenv
 - PostgreSQL
+- matplotlib
+- Docker
+- AWS (EC2 + RDS)
 
 ---
 
